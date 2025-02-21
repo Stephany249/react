@@ -67,12 +67,20 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-
   border-radius: 2px;
 }
 
 .commentBox footer button:hover {
   color: var(--white);
+}
+
+.commentBox footer button:active {
+  color: var(--green-300);
+  transform: scale(0.98);
+}
+
+.commentBox footer button:active > span {
+  color: var(--green-300) !important
 }
 
 .commentBox footer button > span {
