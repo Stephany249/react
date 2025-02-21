@@ -34,6 +34,7 @@ export default [
         { allowConstantExport: true },
       ],
       'react/prop-types': 'off',
+      'react/jsx-key': 'off'
     },
   },
 ]

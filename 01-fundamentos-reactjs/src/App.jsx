@@ -18,7 +18,7 @@ const posts = [
       {
         type: "paragraph",
         content:
-          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+          "Acabei de subir mais um projeto no meu portfólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
       },
       { type: "link", content: "jane.design/doctorcare" },
     ],
@@ -32,13 +32,13 @@ const posts = [
       role: "CTO @Rocketseat",
     },
     content: [
-      { type: "paragraph", content: "Fala galera 👋" },
+      { type: "paragraph", content: "Fala pessoal 👋" },
       {
         type: "paragraph",
         content:
-          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+          "Finalmente finalizei meu novo site/portfólio. Foi um baita desafio criar todo o design e codar na unha, mas consegui 💪🏻",
       },
-      { type: "link", content: "jane.design/doctorcare" },
+      { type: "link", content: "devonlane.design" },
     ],
     publishedAt: new Date("2025-02-20 20:00:00"),
   },
