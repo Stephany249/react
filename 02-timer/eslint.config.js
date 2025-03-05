@@ -28,6 +28,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
       'quotes': ['error', 'single'],
       'semi': ['error', 'never'],
       'sort-imports': ['error', {
