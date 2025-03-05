@@ -5,7 +5,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState } from 'react'
 import { differenceInSeconds } from 'date-fns'
 
-import { HomeContainer, StartCountdownButton, StopCountdownButton } from './styles'
+import {
+  HomeContainer,
+  StartCountdownButton,
+  StopCountdownButton,
+} from './styles'
 import { NewCycleForm } from './Components/NewCycleForm'
 import { Countdown } from './Components/Countdown'
 
@@ -38,7 +42,7 @@ export function Home() {
     defaultValues: {
       task: '',
       minutesAmount: 0,
-    }
+    },
   })
 
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
@@ -47,10 +51,13 @@ export function Home() {
   useEffect(() => {
     let interval: number
 
-    if(activeCycle) {
+    if (activeCycle) {
       interval = setInterval(() => {
-        const secondsDifference  = differenceInSeconds(new Date(), activeCycle.startDate)
-      
+        const secondsDifference = differenceInSeconds(
+          new Date(),
+          activeCycle.startDate,
+        )
+
         if (secondsDifference >= totalSeconds) {
           setCycles((state) =>
             state.map((cycle) => {
@@ -90,11 +97,11 @@ export function Home() {
     setAmountSecondPassed(0)
 
     reset()
-  } 
+  }
 
   function handleInterruptCycle() {
     setCycles((state) =>
-        state.map((cycle) => {
+      state.map((cycle) => {
         if (cycle.id === activeCycleId) {
           return { ...cycle, interruptedDate: new Date() }
         } else {
@@ -122,24 +129,23 @@ export function Home() {
   const task = watch('task')
   const isSubmitDisabled = !task
 
-  return(
+  return (
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
         <NewCycleForm />
 
         <Countdown />
-      {activeCycle ? (
-        <StopCountdownButton onClick={handleInterruptCycle} type="button">
-          <HandPalm size={24} />
-          Interromper
-        </StopCountdownButton>
-      ) : (
-        <StartCountdownButton disabled={isSubmitDisabled} type="submit">
-          <Play size={24} />
-          Começar
-        </StartCountdownButton>
-      )}
- 
+        {activeCycle ? (
+          <StopCountdownButton onClick={handleInterruptCycle} type="button">
+            <HandPalm size={24} />
+            Interromper
+          </StopCountdownButton>
+        ) : (
+          <StartCountdownButton disabled={isSubmitDisabled} type="submit">
+            <Play size={24} />
+            Começar
+          </StartCountdownButton>
+        )}
       </form>
     </HomeContainer>
   )
