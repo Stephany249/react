@@ -48,7 +48,7 @@ export default tseslint.config(
         'newlines-between': 'always'
       }],
       'max-len': ['error', { 'code': 80 }],
-      'prettier/prettier': ['error', { 'singleQuote': true, 'semi': false, 'printWidth': 80 }]
+      'prettier/prettier': ['off', { 'singleQuote': true, 'semi': false, 'printWidth': 80 }]
     },
   },
 )
