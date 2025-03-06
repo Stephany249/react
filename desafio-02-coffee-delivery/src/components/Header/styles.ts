@@ -52,6 +52,10 @@ export const Aside = styled.aside`
     background: ${props => props.theme['yellow-light']};
     color: ${props => props.theme['yellow-dark']};
 
+    &[aria-disabled='true'] {
+      pointer-events: none;
+    }
+
     span {
       font: ${mixins.fonts.textS};
       font-weight: bold;
