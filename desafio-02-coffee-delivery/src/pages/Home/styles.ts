@@ -9,7 +9,7 @@ export const Section = styled.section`
     position: absolute;
     top: 0;
     left: 0;
-    max-height: 544px;
+    max-height: 34rem;
     width: 100vw;
     object-fit: cover;
   }

@@ -4,16 +4,16 @@ import { mixins } from '../../styles/mixins'
 
 export const Container = styled.main`
   display: flex;
-  max-width: 1160px;
-  padding: 40px 20px;
+  max-width: 90rem;
+  padding: 2.5rem 1.25rem;
   margin: 0 auto;
-  gap: 32px;
+  gap: 2rem;
 `
 
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 
   h2 {
     ${mixins.fonts.titleXS};
@@ -23,27 +23,27 @@ export const InfoContainer = styled.div`
   > form {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 2rem;
   }
 `
 
 export const FormsContainer = styled.div`
-  padding: 40px;
+  padding: 2.5rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme['base-card']};
   width: 100%;
-  min-width: 640px;
+  min-width: 40rem;
 
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 2rem;
 `
 
 export const AddressContainer = styled(FormsContainer)``
 
 export const Heading = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 
   div {
     span {
@@ -69,8 +69,8 @@ export const AddressForm = styled.div`
     'street street street'
     'number fullAddress fullAddress'
     'neighborhood city state';
-  grid-template-columns: 200px 1fr 60px;
-  grid-gap: 16px 12px;
+  grid-template-columns: 12.5rem 1fr 3.75rem;
+  grid-gap: 1rem 0.75rem;
 `
 
 export const PaymentContainer = styled(FormsContainer)``
@@ -84,13 +84,13 @@ export const PaymentHeading = styled(Heading)`
 export const PaymentOptions = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 
   > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 0.75rem;
   }
 `
 
@@ -100,13 +100,13 @@ export const Coffee = styled.div`
 
   > div {
     > img {
-      width: 64px;
-      height: 64px;
+      width: 4rem;
+      height: 4rem;
     }
 
     display: flex;
     align-items: stretch;
-    gap: 20px;
+    gap: 1.25rem;
 
     > div {
       display: flex;
@@ -122,15 +122,15 @@ export const Coffee = styled.div`
 
 export const CoffeeInfo = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 
   > button {
-    padding: 6px 8px;
+    padding: 0.375rem 0.5rem;
     background-color: ${({ theme }) => theme['base-button']};
     border-radius: 6px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
 
     transition: all 0.2s;
 
@@ -151,24 +151,24 @@ export const CoffeeInfo = styled.div`
 `
 
 export const CartTotal = styled.div`
-  padding: 40px;
+  padding: 2.5rem;
   border-radius: 6px 36px;
   background-color: ${({ theme }) => theme['base-card']};
   width: 100%;
-  min-width: 448px;
+  min-width: 28rem;
 
   > span {
     display: block;
-    height: 1px;
+    height: 0.063rem;
     background-color: ${({ theme }) => theme['base-button']};
-    margin: 24px 0;
+    margin: 1.5rem 0;
   }
 `
 
 export const CartTotalInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 
   div {
     display: flex;
@@ -192,9 +192,9 @@ export const CartTotalInfo = styled.div`
 `
 
 export const CheckoutButton = styled.button`
-  margin-top: 24px;
+  margin-top: 1.5rem;
   width: 100%;
-  padding: 12px;
+  padding: 0.75rem;
   text-transform: uppercase;
 
   ${mixins.fonts.buttonG};

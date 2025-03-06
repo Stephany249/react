@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { mixins } from '../../../styles/mixins'
 
 export const Container = styled.label`
-  padding: 16px;
+  padding: 1rem;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
   border-radius: 6px;
   border: 1px solid transparent;
   background-color: ${({ theme }) => theme['base-button']};

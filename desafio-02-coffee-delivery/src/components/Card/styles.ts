@@ -87,7 +87,7 @@ export const Order = styled.div<{ $itemAdded?: boolean }>`
       $itemAdded ? theme['yellow-dark'] : theme['purple-dark']};
     transition: background-color 0.2s;
     border-radius: 6px;
-    padding: 8px;
+    padding: 0.5rem;
     display: flex;
 
     &:hover {

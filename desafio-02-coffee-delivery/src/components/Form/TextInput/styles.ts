@@ -5,7 +5,7 @@ import { mixins } from '../../../styles/mixins'
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 `
 
 export const Container = styled.label`
@@ -14,7 +14,6 @@ export const Container = styled.label`
   justify-content: space-between;
   border-radius: 6px;
   border: 1px solid ${({ theme }) => theme['base-button']};
-  border-radius: 6px;
 
   background-color: ${({ theme }) => theme['base-input']};
 
@@ -33,7 +32,7 @@ export const Container = styled.label`
     width: 100%;
     background-color: transparent;
     border: none;
-    padding: 12px;
+    padding: 0.75rem;
     outline: none;
 
     &::placeholder {
@@ -43,7 +42,7 @@ export const Container = styled.label`
 
   span {
     color: ${({ theme }) => theme['base-label']};
-    padding-right: 12px;
+    padding-right: 0.75rem;
     ${mixins.fonts.textS};
     font-style: italic;
   }
