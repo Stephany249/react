@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.div`
   background: url('/bg.svg') no-repeat center;
@@ -8,9 +8,8 @@ export const HeaderContainer = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
-  
+
   img {
     margin-top: 4rem;
   }
-
 `
