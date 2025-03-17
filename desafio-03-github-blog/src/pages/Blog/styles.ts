@@ -7,7 +7,9 @@ export const BlogContainer = styled.div`
 `
 export const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.4rem;
-  margin-top: 3.2rem;
+  margin-top: 4.8rem;
+  margin-bottom: 4.8rem;
+
+  gap: 3.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(41.6rem, 1fr));
 `

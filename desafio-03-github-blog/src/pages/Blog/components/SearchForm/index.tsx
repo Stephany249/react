@@ -1,13 +1,32 @@
+import { FormEvent, useState } from 'react'
+
 import { SearchFormContainer, SearchFormHeader } from './styles'
 
-export function SearchForm() {
+interface SearchFormProps {
+  postsLength: number
+  getPosts: (query?: string) => Promise<void>
+}
+
+export function SearchForm({ postsLength, getPosts }: SearchFormProps) {
+  const [search, setSearch] = useState('')
+
+  const handleSubmitForm = async (event: FormEvent) => {
+    event.preventDefault()
+    await getPosts(search)
+  }
+
   return (
-    <SearchFormContainer>
+    <SearchFormContainer onSubmit={handleSubmitForm}>
       <SearchFormHeader>
         <strong>Publicações</strong>
-        <span>6 publicações</span>
+        <span>{postsLength} publicações</span>
       </SearchFormHeader>
-      <input type="text" placeholder="Busque por conteúdo" />
+      <input
+        type="text"
+        placeholder="Busque por conteúdo"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
     </SearchFormContainer>
   )
 }

@@ -30,7 +30,7 @@ export const CardHeader = styled.header`
     text-overflow: ellipsis;
   }
 
-  span {
+  time {
     color: ${(props) => props.theme['base-span']};
     font-size: 0.875rem;
     width: max-content;
