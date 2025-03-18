@@ -1,12 +1,12 @@
 import { format, formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale/pt-BR'
 
-import { Post } from '../..'
+import { IPost } from '../..'
 
 import { CardContainer, CardDescription, CardHeader } from './styles'
 
 interface CardProps {
-  post: Post
+  post: IPost
 }
 
 export function Card({ post }: CardProps) {

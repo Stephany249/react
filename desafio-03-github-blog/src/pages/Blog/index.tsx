@@ -11,7 +11,7 @@ import { BlogContainer, Grid } from './styles'
 const username = import.meta.env.VITE_GITHUB_USER
 const repoName = import.meta.env.VITE_REPO_NAME
 
-export interface Post {
+export interface IPost {
   title: string
   body: string
   created_at: string
@@ -24,7 +24,7 @@ export interface Post {
 }
 
 export function Blog() {
-  const [posts, setPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<IPost[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   const postsLength = posts.length
