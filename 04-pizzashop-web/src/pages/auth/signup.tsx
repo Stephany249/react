@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable max-len */
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
@@ -9,7 +10,6 @@ import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const signUpForm = z.object({
   restaurantName: z.string(),
   managerName: z.string(),
@@ -32,15 +32,12 @@ export function SignUp() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000))
 
-      console.log(data)
-
       toast.success('Restaurante cadastrado com sucesso!', {
         action: {
           label: 'Login',
           onClick: () => navigate('/sign-in'),
         },
       })
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error('Erro ao cadastrar restaurante.')
       return
