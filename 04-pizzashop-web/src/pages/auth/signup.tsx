@@ -36,7 +36,7 @@ export function SignUp() {
 
   async function handleSignUp(data: SignUpForm) {
     try {
-      await registerRestaurant({
+      await registerRestaurantFn({
         restaurantName: data.restaurantName,
         managerName: data.managerName,
         email: data.email,
