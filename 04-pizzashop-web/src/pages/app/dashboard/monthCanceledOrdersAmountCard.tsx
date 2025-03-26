@@ -2,6 +2,8 @@
 import { DollarSign } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
 
+import { MetricCardSkeleton } from './metricCardSkeleton'
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { getMonthCanceledOrdersAmount } from '@/api/getMonthCanceledOrdersAmount'
 
@@ -20,7 +22,7 @@ export function MonthCanceledOrdersAmountCard() {
         <DollarSign className="text-muted-foreground h-4 w-4" />
       </CardHeader>
       <CardContent className="space-y-1">
-        {monthCanceledOrdersAmount && (
+        {monthCanceledOrdersAmount ? (
           <>
             <span className="text-2xl font-bold tracking-tight">
               {monthCanceledOrdersAmount.amount.toLocaleString('pt-BR')}
@@ -43,6 +45,8 @@ export function MonthCanceledOrdersAmountCard() {
               )}
             </p>
           </>
+        ) : (
+          <MetricCardSkeleton />
         )}
       </CardContent>
     </Card>
