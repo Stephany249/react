@@ -4,7 +4,7 @@ import { ptBR } from 'date-fns/locale'
 
 import { OrderDetailsSkeleton } from './orderDetailsSkeleton'
 
-import { getOrderDetails } from '@/api/getorderDetails'
+import { getOrderDetails } from '@/api/getOrderDetails'
 import {
   DialogContent,
   DialogDescription,
