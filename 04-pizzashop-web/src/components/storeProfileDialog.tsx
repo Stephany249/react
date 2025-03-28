@@ -69,12 +69,12 @@ export function StoreProfileDialog() {
     description,
   }: StoreProfileSchema) {
     const cached = queryClient.getQueryData<GetManagedRestaurantResponse>([
-      'managed-restaurant',
+      'managedRestaurant',
     ])
 
     if (cached) {
       queryClient.setQueryData<GetManagedRestaurantResponse>(
-        ['managed-restaurant'],
+        ['managedRestaurant'],
         {
           ...cached,
           name,

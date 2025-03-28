@@ -1,8 +1,10 @@
-import { Building, ChevronDown, LogOut } from 'lucide-react'
 import { useMutation, useQuery } from '@tanstack/react-query'
+import { Building, ChevronDown, LogOut } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
+import { StoreProfileDialog } from './storeProfileDialog'
 import { Button } from './ui/button'
+import { Dialog, DialogTrigger } from './ui/dialog'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,12 +14,10 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 import { Skeleton } from './ui/skeleton'
-import { Dialog, DialogTrigger } from './ui/dialog'
-import { StoreProfileDialog } from './storeProfileDialog'
 
+import { signOut } from '@/api/signOut'
 import { getProfile } from '@/api/getProfile'
 import { getManagedRestaurant } from '@/api/getManagedRestaurant'
-import { signOut } from '@/api/signOut'
 
 export function AccountMenu() {
   const navigate = useNavigate()
@@ -58,6 +58,7 @@ export function AccountMenu() {
             <ChevronDown className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
+
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuLabel className="flex flex-col">
             {isLoadingProfile ? (
@@ -93,6 +94,7 @@ export function AccountMenu() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+
       <StoreProfileDialog />
     </Dialog>
   )
