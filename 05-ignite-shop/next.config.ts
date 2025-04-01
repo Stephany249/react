@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
   images: {
+    domains: ['files.stripe.com'],
     localPatterns: [
       {
         pathname: '/assets/**',
