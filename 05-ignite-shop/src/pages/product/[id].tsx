@@ -45,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         params: { id: 'prod_S3GpN8918V7WLb' },
       },
     ],
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
