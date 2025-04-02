@@ -1,5 +1,6 @@
+/* eslint-disable react-refresh/only-export-components */
 import Image from 'next/image'
-import { GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Stripe from 'stripe'
 
 import {
@@ -35,6 +36,17 @@ export default function Product({ product }: ProductProps) {
       </ProductDetails>
     </ProductContainer>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [
+      {
+        params: { id: 'prod_S3GpN8918V7WLb' },
+      },
+    ],
+    fallback: false,
+  }
 }
 
 export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
