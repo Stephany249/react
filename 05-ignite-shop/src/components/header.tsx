@@ -1,7 +1,9 @@
-import { Handbag } from 'phosphor-react'
 import Image from 'next/image'
+import * as Dialog from '@radix-ui/react-dialog'
 
 import logoImg from '../assets/logo.svg'
+
+import CartButton from './cartButton'
 
 import { useCartContext } from '@/contexts/cartContext'
 import { HeaderContainer } from '@/styles/components/header'
@@ -13,11 +15,8 @@ export default function Header() {
     <HeaderContainer>
       <Image src={logoImg.src} alt="" width={130} height={52} />
 
-      <button>
-        <Handbag size={24} weight="bold" />
-
-        {cartQuantity >= 1 && <span>{cartQuantity}</span>}
-      </button>
+      <Dialog.Root></Dialog.Root>
+      <CartButton />
     </HeaderContainer>
   )
 }

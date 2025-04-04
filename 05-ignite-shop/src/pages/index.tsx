@@ -6,19 +6,16 @@ import Link from 'next/link'
 import { useKeenSlider } from 'keen-slider/react'
 import Stripe from 'stripe'
 import Head from 'next/head'
+import { MouseEvent } from 'react'
 
 import { HomeContainer, Product } from '@/styles/pages/home'
 import { stripe } from '@/lib/stripe'
-
+import { IProduct, useCartContext } from '@/contexts/cartContext'
+import CartButton from '@/components/cartButton'
 import 'keen-slider/keen-slider.min.css'
 
 interface HomeProps {
-  products: {
-    id: string
-    name: string
-    imageUrl: string
-    price: string
-  }[]
+  products: IProduct[]
 }
 
 export default function Home({ products }: HomeProps) {
@@ -28,6 +25,17 @@ export default function Home({ products }: HomeProps) {
       spacing: 48,
     },
   })
+
+  const { AddProductToCart } = useCartContext()
+
+  const handleAddProductToCart = (
+    e: MouseEvent<HTMLButtonElement>,
+    product: IProduct,
+  ) => {
+    e.preventDefault()
+
+    AddProductToCart(product)
+  }
 
   return (
     <>
@@ -50,8 +58,15 @@ export default function Home({ products }: HomeProps) {
                   alt={product.name}
                 />
                 <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
+                  <div>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </div>
+
+                  <CartButton
+                    showQuantity={false}
+                    onClick={(e: any) => handleAddProductToCart(e, product)}
+                  />
                 </footer>
               </Product>
             </Link>
