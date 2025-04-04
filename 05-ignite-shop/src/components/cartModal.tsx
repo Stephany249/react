@@ -2,7 +2,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'phosphor-react'
 import Image from 'next/image'
 
-import { useCartContext } from '@/contexts/cartContext'
+import { IProduct, useCartContext } from '@/contexts/cartContext'
 import {
   CartClose,
   CartFinalization,
@@ -15,23 +15,16 @@ import {
 } from '@/styles/components/cartModal'
 
 export default function CartModal() {
-  const { cartItems } = useCartContext()
-
-  const totalCart = cartItems.reduce((acc, item) => {
-    const price = Number(
-      item.price
-        .replace(/\s/g, '')
-        .replace('R$', '')
-        .replace('.', '')
-        .replace(',', '.'),
-    )
-    return (acc += price)
-  }, 0)
+  const { cartItems, totalCart, RemoveProductToCart } = useCartContext()
 
   const totalCartFormatted = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
   }).format(totalCart)
+
+  const handleRemoveProductToCart = (cartItem: IProduct) => {
+    RemoveProductToCart(cartItem.id)
+  }
 
   return (
     <Dialog.Portal>
@@ -55,7 +48,9 @@ export default function CartModal() {
 
                   <strong>{item.price}</strong>
 
-                  <button>Remover</button>
+                  <button onClick={() => handleRemoveProductToCart(item)}>
+                    Remover
+                  </button>
                 </CartProductDetails>
               </CartProduct>
             ))}

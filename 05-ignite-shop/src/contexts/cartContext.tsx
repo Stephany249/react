@@ -15,6 +15,7 @@ interface CartContextType {
   cartQuantity: number
   totalCart: number
   AddProductToCart: (product: IProduct) => void
+  RemoveProductToCart: (productId: number) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -27,6 +28,17 @@ export function CartContextProvider({ children }: CarContextProviderProps) {
   const [cartItems, setCartItems] = useState<IProduct[]>([])
 
   const cartQuantity = cartItems.length
+
+  const totalCart = cartItems.reduce((acc, sum) => {
+    const price = Number(
+      sum.price
+        .replace(/\s/g, '')
+        .replace('R$', '')
+        .replace('.', '')
+        .replace(',', '.'),
+    )
+    return (acc += price)
+  }, 0)
 
   const AddProductToCart = (product: IProduct) => {
     const productAlreadyExists = cartItems.findIndex(
@@ -42,20 +54,29 @@ export function CartContextProvider({ children }: CarContextProviderProps) {
     setCartItems(newProduct)
   }
 
-  const totalCart = cartItems.reduce((acc, sum) => {
-    const price = Number(
-      sum.price
-        .replace(/\s/g, '')
-        .replace('R$', '')
-        .replace('.', '')
-        .replace(',', '.'),
+  const RemoveProductToCart = (productId: number) => {
+    const productAlreadyExists = cartItems.findIndex(
+      (cartItem) => cartItem.id === productId,
     )
-    return (acc += price)
-  }, 0)
+
+    const newCart = produce(cartItems, (draft) => {
+      if (productAlreadyExists >= 0) {
+        draft.splice(productAlreadyExists, 1)
+      }
+    })
+
+    setCartItems(newCart)
+  }
 
   return (
     <CartContext.Provider
-      value={{ cartItems, cartQuantity, totalCart, AddProductToCart }}
+      value={{
+        cartItems,
+        cartQuantity,
+        totalCart,
+        AddProductToCart,
+        RemoveProductToCart,
+      }}
     >
       {children}
     </CartContext.Provider>
