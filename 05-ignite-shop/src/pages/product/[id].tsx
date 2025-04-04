@@ -33,8 +33,6 @@ export default function Product({ product }: ProductProps) {
     AddProductToCart(productToAdd)
   }
 
-  console.log('cartItems', cartItems)
-
   return (
     <>
       <Head>

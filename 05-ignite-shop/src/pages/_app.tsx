@@ -10,8 +10,6 @@ globalStyles()
 export default function App({ Component, pageProps }: AppProps) {
   const { cartQuantity } = useCartContext()
 
-  console.log('cartQuantity', cartQuantity)
-
   return (
     <CartContextProvider>
       <Container>
