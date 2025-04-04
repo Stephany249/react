@@ -5,7 +5,11 @@ import { GetServerSideProps } from 'next'
 import Stripe from 'stripe'
 import Head from 'next/head'
 
-import { ImageContainer, SuccessContainer } from '@/styles/pages/success'
+import {
+  ImageContainer,
+  ImagesContainer,
+  SuccessContainer,
+} from '@/styles/pages/success'
 import { stripe } from '@/lib/stripe'
 
 interface SuccessProps {
@@ -13,10 +17,14 @@ interface SuccessProps {
   product: {
     name: string
     images: string[]
-  }
+  }[]
+  productsImages: string[]
 }
 
-export default function Success({ costumerName, product }: SuccessProps) {
+export default function Success({
+  costumerName,
+  productsImages,
+}: SuccessProps) {
   return (
     <>
       <Head>
@@ -28,13 +36,17 @@ export default function Success({ costumerName, product }: SuccessProps) {
       <SuccessContainer>
         <h1>Compra efetuada</h1>
 
-        <ImageContainer>
-          <Image src={product.images[0]} width={120} height={110} alt="" />
-        </ImageContainer>
-
+        <ImagesContainer>
+          {productsImages.map((image, i) => (
+            <ImageContainer key={i}>
+              <Image src={image} width={120} height={110} alt="" />
+            </ImageContainer>
+          ))}
+        </ImagesContainer>
         <p>
-          Uhuul <strong>{costumerName}</strong>, sua{' '}
-          <strong>{product.name}</strong> já está a caminho da sua casa.
+          Uhuul <strong>{costumerName}</strong>, sua compra de{' '}
+          <strong>{productsImages.length} </strong> camisetas já está a caminho
+          da sua casa.
         </p>
 
         <Link href="/">Voltar ao catálogo</Link>
@@ -61,12 +73,22 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const costumerName = session.customer_details.name
 
-  const product = session.line_items.data[0].price.product as Stripe.Product
+  const products = session.line_items.data.map((item) => {
+    const product = item.price.product as Stripe.Product
+
+    return {
+      name: product.name,
+      images: product.images[0],
+    }
+  })
+
+  const productsImages = products.flatMap((product) => product.images)
 
   return {
     props: {
       costumerName,
-      product,
+      product: products,
+      productsImages,
     },
   }
 }

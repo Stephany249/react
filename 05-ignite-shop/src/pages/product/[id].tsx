@@ -17,7 +17,7 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
-  const { AddProductToCart } = useCartContext()
+  const { AddProductToCart, CheckIfItemAlreadyExistsInCart } = useCartContext()
 
   const handleAddProductToCart = () => {
     const productToAdd = {
@@ -27,6 +27,8 @@ export default function Product({ product }: ProductProps) {
 
     AddProductToCart(productToAdd)
   }
+
+  const itemAlreadyAddedToCart = CheckIfItemAlreadyExistsInCart(product.id)
 
   return (
     <>
@@ -44,7 +46,14 @@ export default function Product({ product }: ProductProps) {
           <span>{product.price}</span>
           <p>{product.description}</p>
 
-          <button onClick={handleAddProductToCart}>Colocar na sacola </button>
+          <button
+            onClick={handleAddProductToCart}
+            disabled={itemAlreadyAddedToCart}
+          >
+            {itemAlreadyAddedToCart
+              ? 'Produto adicionado no carrinho'
+              : 'Colocar na sacola'}
+          </button>
         </ProductDetails>
       </ProductContainer>
     </>

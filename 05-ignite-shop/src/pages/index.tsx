@@ -26,7 +26,7 @@ export default function Home({ products }: HomeProps) {
     },
   })
 
-  const { AddProductToCart } = useCartContext()
+  const { AddProductToCart, CheckIfItemAlreadyExistsInCart } = useCartContext()
 
   const handleAddProductToCart = (
     e: MouseEvent<HTMLButtonElement>,
@@ -67,6 +67,8 @@ export default function Home({ products }: HomeProps) {
                     showQuantity={false}
                     color="green"
                     onClick={(e: any) => handleAddProductToCart(e, product)}
+                    size="large"
+                    disabled={CheckIfItemAlreadyExistsInCart(product.id)}
                   />
                 </footer>
               </Product>

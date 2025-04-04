@@ -16,6 +16,7 @@ interface CartContextType {
   totalCart: number
   AddProductToCart: (product: IProduct) => void
   RemoveProductToCart: (productId: number) => void
+  CheckIfItemAlreadyExistsInCart: (productId: number) => boolean
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -68,6 +69,10 @@ export function CartContextProvider({ children }: CarContextProviderProps) {
     setCartItems(newCart)
   }
 
+  const CheckIfItemAlreadyExistsInCart = (productId: number) => {
+    return cartItems.some((product) => product.id === productId)
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -76,6 +81,7 @@ export function CartContextProvider({ children }: CarContextProviderProps) {
         totalCart,
         AddProductToCart,
         RemoveProductToCart,
+        CheckIfItemAlreadyExistsInCart,
       }}
     >
       {children}
