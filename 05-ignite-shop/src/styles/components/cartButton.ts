@@ -4,7 +4,6 @@ export const ButtonContainer = styled('button', {
   height: '3.8rem',
   width: '3.8rem',
 
-  backgroundColor: '$green500',
   borderRadius: '6px',
   border: '0',
   padding: '0.8rem',
@@ -36,5 +35,31 @@ export const ButtonContainer = styled('button', {
 
     fontWeight: 'bold',
     fontSize: '1.4rem',
+  },
+
+  variants: {
+    color: {
+      gray: {
+        background: '$gray800',
+        color: '$gray700',
+      },
+
+      green: {
+        backgroundColor: '$green500',
+        color: '$white',
+      },
+    },
+
+    size: {
+      medium: {
+        height: '3.8rem',
+        width: '3.8rem',
+      },
+
+      large: {
+        height: '4.4rem',
+        width: '4.4rem',
+      },
+    },
   },
 })

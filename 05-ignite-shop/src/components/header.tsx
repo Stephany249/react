@@ -15,7 +15,7 @@ export default function Header() {
 
       <Dialog.Root>
         <Dialog.Trigger asChild>
-          <CartButton showQuantity />
+          <CartButton showQuantity color="gray" />
         </Dialog.Trigger>
 
         <CartModal />

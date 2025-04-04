@@ -65,6 +65,7 @@ export default function Home({ products }: HomeProps) {
 
                   <CartButton
                     showQuantity={false}
+                    color="green"
                     onClick={(e: any) => handleAddProductToCart(e, product)}
                   />
                 </footer>

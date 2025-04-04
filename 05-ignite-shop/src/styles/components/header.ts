@@ -9,12 +9,4 @@ export const HeaderContainer = styled('header', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-
-  button: {
-    backgroundColor: '$gray800',
-
-    svg: {
-      color: '$gray700',
-    },
-  },
 })
