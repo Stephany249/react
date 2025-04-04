@@ -12,7 +12,7 @@ import {
   ProductDetails,
 } from '@/styles/pages/product'
 import { stripe } from '@/lib/stripe'
-import { IProduct } from '@/contexts/cartContext'
+import { IProduct, useCartContext } from '@/contexts/cartContext'
 
 interface ProductProps {
   product: IProduct
@@ -22,23 +22,18 @@ export default function Product({ product }: ProductProps) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
     useState(false)
 
-  async function handleBuyProduct() {
-    try {
-      setIsCreatingCheckoutSession(true)
+  const { cartItems, AddProductToCart } = useCartContext()
 
-      const response = await axios.post('/api/checkout', {
-        priceId: product.defaultPriceId,
-      })
-
-      const { checkoutUrl } = response.data
-
-      window.location.href = checkoutUrl
-    } catch (err) {
-      setIsCreatingCheckoutSession(false)
-
-      alert('Falha ao redirecionar ao checkout!')
+  const handleAddProductToCart = () => {
+    const productToAdd = {
+      ...product,
+      quantity: 1,
     }
+
+    AddProductToCart(productToAdd)
   }
+
+  console.log('cartItems', cartItems)
 
   return (
     <>
@@ -58,9 +53,9 @@ export default function Product({ product }: ProductProps) {
 
           <button
             disabled={isCreatingCheckoutSession}
-            onClick={handleBuyProduct}
+            onClick={handleAddProductToCart}
           >
-            Comprar agora{' '}
+            Colocar na sacola{' '}
           </button>
         </ProductDetails>
       </ProductContainer>

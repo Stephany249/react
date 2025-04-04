@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useContext, useState } from 'react'
+import { produce } from 'immer'
 
 export interface IProduct {
   id: number
@@ -16,6 +17,7 @@ interface CartItem extends IProduct {
 interface CartContextType {
   cartItems: CartItem[]
   cartQuantity: number
+  AddProductToCart: (product: CartItem) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -29,8 +31,22 @@ export function CartContextProvider({ children }: CarContextProviderProps) {
 
   const cartQuantity = cartItems.length
 
+  const AddProductToCart = (product: CartItem) => {
+    const productAlreadyExists = cartItems.findIndex(
+      (cartItem) => cartItem.id === product.id,
+    )
+
+    const newProduct = produce(cartItems, (draft) => {
+      if (productAlreadyExists < 0) {
+        draft.push(product)
+      }
+    })
+
+    setCartItems(newProduct)
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, cartQuantity }}>
+    <CartContext.Provider value={{ cartItems, cartQuantity, AddProductToCart }}>
       {children}
     </CartContext.Provider>
   )

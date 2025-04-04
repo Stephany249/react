@@ -12,13 +12,11 @@ import { CartContextProvider, useCartContext } from '@/contexts/cartContext'
 globalStyles()
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [test, setTest] = useState(true)
-
   const { cartQuantity } = useCartContext()
 
   return (
-    <Container>
-      <CartContextProvider>
+    <CartContextProvider>
+      <Container>
         <Header>
           <Image src={logoImg.src} alt="" width={130} height={52} />
 
@@ -27,9 +25,9 @@ export default function App({ Component, pageProps }: AppProps) {
             {cartQuantity > 0 && <span>{cartQuantity}</span>}
           </button>
         </Header>
-      </CartContextProvider>
 
-      <Component {...pageProps} />
-    </Container>
+        <Component {...pageProps} />
+      </Container>
+    </CartContextProvider>
   )
 }
