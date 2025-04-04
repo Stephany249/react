@@ -129,6 +129,13 @@ export const CartFinalization = styled('div', {
     borderRadius: 8,
     fontSize: '$md',
     fontWeight: '700',
+
+    cursor: 'pointer',
+
+    '&:disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.6,
+    },
   },
 })
 

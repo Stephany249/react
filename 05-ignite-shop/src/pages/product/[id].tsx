@@ -2,8 +2,6 @@
 import Image from 'next/image'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Stripe from 'stripe'
-import axios from 'axios'
-import { useState } from 'react'
 import Head from 'next/head'
 
 import {
@@ -19,10 +17,7 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
-  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
-    useState(false)
-
-  const { cartItems, AddProductToCart } = useCartContext()
+  const { AddProductToCart } = useCartContext()
 
   const handleAddProductToCart = () => {
     const productToAdd = {
@@ -49,12 +44,7 @@ export default function Product({ product }: ProductProps) {
           <span>{product.price}</span>
           <p>{product.description}</p>
 
-          <button
-            disabled={isCreatingCheckoutSession}
-            onClick={handleAddProductToCart}
-          >
-            Colocar na sacola{' '}
-          </button>
+          <button onClick={handleAddProductToCart}>Colocar na sacola </button>
         </ProductDetails>
       </ProductContainer>
     </>

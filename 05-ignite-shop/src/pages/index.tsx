@@ -86,6 +86,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const products = response.data.map((product) => {
     const price = product.default_price as Stripe.Price
 
+    console.log('price: ' + price.id)
+
     return {
       id: product.id,
       name: product.name,
@@ -94,6 +96,7 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL',
       }).format((price.unit_amount ?? 0) / 100),
+      defaultPriceId: price.id,
     }
   })
 
