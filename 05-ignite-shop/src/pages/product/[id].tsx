@@ -12,16 +12,10 @@ import {
   ProductDetails,
 } from '@/styles/pages/product'
 import { stripe } from '@/lib/stripe'
+import { IProduct } from '@/contexts/cartContext'
 
 interface ProductProps {
-  product: {
-    id: string
-    name: string
-    imageUrl: string
-    price: string
-    description: string
-    defaultPriceId: string
-  }
+  product: IProduct
 }
 
 export default function Product({ product }: ProductProps) {
